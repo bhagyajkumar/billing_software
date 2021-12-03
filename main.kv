@@ -1,0 +1,99 @@
+#:kivy 2.0.0
+
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+MDScreen:
+
+    MDBottomNavigation:
+        panel_color: get_color_from_hex("#eeeaea")
+        selected_color_background: get_color_from_hex("#97ecf8")
+        text_color_active: 0, 0, 0, 1
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Products'
+            icon: 'shopping'
+            badge_icon: "numeric-10"
+            
+
+            BoxLayout:
+                orientation: 'vertical'
+                # MDRaisedButton:
+                #     text: "Add Product"
+                #     pos_hint: {'center_x': .5, 'center_y': .5}
+                #     on_release: app.show_example_snackbar('Hello')
+                MDToolbar:
+                    title: "All Products"
+
+                ScrollView:
+                    MDList:
+                        id: container
+            
+            MDFloatingActionButton:
+                icon: 'plus'
+                pos_hint: {'center_x': .9, 'center_y': .1}
+                on_release: app.add_product(1)
+
+        MDBottomNavigationItem:
+            name: 'billing'
+            text: 'Billing'
+            icon: 'billboard'
+            badge_icon: "numeric-5"
+
+            
+            BoxLayout:
+                orientation: 'vertical'
+                MDToolbar:
+                    title: "Billing"
+                MDLabel:
+                    text: "Billing"
+                    halign: 'center'
+                    theme_text_color: 'Primary'
+                    font_style: 'H6'
+
+        MDBottomNavigationItem:
+            name: 'screen_3'
+            text: 'history'
+            icon: 'history'
+
+           
+            BoxLayout:
+                orientation: 'vertical'
+                MDToolbar:
+                    title: "History"
+                MDLabel:
+                    text: "History"
+                    halign: 'center'
+                    theme_text_color: 'Primary'
+                    font_style: 'H6'
+
+<AddProductDialog>:
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        id: product_name
+        hint_text: "Product name"
+        write_tab: False
+
+    MDTextField:
+        id: product_price
+        hint_text: "Product price"
+        write_tab: False
+
+<EditProductDialog>:
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        id: product_name
+        hint_text: "Product name"
+
+    MDTextField:
+        id: product_price
+        hint_text: "Product price"
+
